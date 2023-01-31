@@ -1,2 +1,2 @@
-let numbers: number[] = [];
-numbers.forEach(n => n)
+// Tuples types
+let user: [number, string] = [1, 'james']
