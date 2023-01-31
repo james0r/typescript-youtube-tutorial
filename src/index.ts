@@ -1,14 +1,8 @@
-type Draggable = {
-  drag: () => void
-}
+// Literal (exact, specific)
+type Quantity = 50 | 100
 
-type Resizable = {
-  resize: () => void
-}
+let quantity: Quantity = 100
 
-type UIWidget = Draggable & Resizable
+type SystemOfMeasurement = 'imperial' | 'metric'
 
-let textBox: UIWidget = {
-  drag: () => {},
-  resize: () => {}
-}
+let measurementSystem: SystemOfMeasurement = 'imperial'
