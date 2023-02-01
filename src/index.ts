@@ -1,8 +1,15 @@
-function render(document: unknown) {
-  // Type unknown is better than type any because it requires that we type check member funcs & vars
-  // Narrowing
-  if (typeof document === 'string') {
-    document.move()
-    document.fly()
+function reject(message: string): never {
+  throw new Error(message)
+}
+
+reject('...')
+console.log('something')
+
+function processEvents(): never {
+  while (true) {
+    // Read a message from a queue
   }
 }
+
+processEvents()
+console.log('something')

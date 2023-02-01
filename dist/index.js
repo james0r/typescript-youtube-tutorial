@@ -1,4 +1,6 @@
 "use strict";
-let phone = document.getElementById('phone');
-console.log(phone.value);
+function processEvents() {
+    while (true) {
+    }
+}
 //# sourceMappingURL=index.js.map
