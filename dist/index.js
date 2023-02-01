@@ -26,5 +26,19 @@ class Teacher extends Person {
     }
 }
 let teacher = new Teacher('John', 'Doe');
-console.log(teacher.fullName);
+class Principal extends Person {
+    get fullName() {
+        return 'Principal ' + super.fullName;
+    }
+}
+function printNames(people) {
+    for (let person of people) {
+        console.log(person.fullName);
+    }
+}
+printNames([
+    new Student(1, 'Bob', 'Jenkins'),
+    new Teacher('Tom', 'Hatheford'),
+    new Principal('Susan', 'Summers')
+]);
 //# sourceMappingURL=index.js.map
