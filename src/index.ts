@@ -20,3 +20,9 @@ class Account {
     this.balance += amount
   }
 }
+
+let account = new Account(1, 'Mosh', 0)
+account.deposit(100)
+
+// Because typeof will just return object we need to use instanceof to compare against class type
+console.log(account instanceof Account)
