@@ -1,47 +1,26 @@
-// Protected and Private modifiers.
-// Note: Only use protected if you know what you're doing.
-// Most often you should be using prviate and public
+// Abstract Classes and Methods
 
-class Person {
-  constructor(public firstName: string, public lastName: string) {
+// Abstract classes are blueprints that cannot be instantiated and
+// need to be extended before instantiating
+abstract class Shape {
+  constructor(public color: string) {
 
   }
-  get fullName() {
-    return this.firstName + ' ' + this.lastName
+
+  // Child classes must implement this member function (Think contract)
+  abstract render(): void
+}
+
+class Circle extends Shape {
+  constructor(public radius: number, color: string) {
+    super(color)
   }
 
-  walk() {
-    console.log('Walking')
+  override render(): void {
+      console.log('Rendering a circle')
   }
 }
 
-class Student extends Person {
-  constructor(public studentId: number, firstName: string, lastName: string) {
-    super(firstName, lastName)
-  }
+let shape = new Circle(5, 'red')
 
-  takeTest() {
-    this.walk()
-    console.log('Taking a test.')
-  }
-}
-
-let student = new Student(1, 'James', 'Auble')
-student.takeTest()
-
-class Teacher extends Person {
-  
-  override get fullName() {
-    return 'Professor ' + super.fullName
-  }
-}
-
-let teacher = new Teacher('John', 'Doe')
-
-class Principal extends Person {
-  override get fullName() {
-    return 'Principal ' + super.fullName
-  }
-}
-
-
+shape.render()

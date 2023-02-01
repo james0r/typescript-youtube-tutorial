@@ -1,40 +1,18 @@
 "use strict";
-class Person {
-    constructor(firstName, lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-    }
-    get fullName() {
-        return this.firstName + ' ' + this.lastName;
-    }
-    walk() {
-        console.log('Walking');
+class Shape {
+    constructor(color) {
+        this.color = color;
     }
 }
-class Student extends Person {
-    constructor(studentId, firstName, lastName) {
-        super(firstName, lastName);
-        this.studentId = studentId;
+class Circle extends Shape {
+    constructor(radius, color) {
+        super(color);
+        this.radius = radius;
     }
-    walk() {
-        console.log('A student walking.');
-    }
-    takeTest() {
-        this.walk();
-        console.log('Taking a test.');
+    render() {
+        console.log('Rendering a circle');
     }
 }
-let student = new Student(1, 'James', 'Auble');
-student.takeTest();
-class Teacher extends Person {
-    get fullName() {
-        return 'Professor ' + super.fullName;
-    }
-}
-let teacher = new Teacher('John', 'Doe');
-class Principal extends Person {
-    get fullName() {
-        return 'Principal ' + super.fullName;
-    }
-}
+let shape = new Circle(5, 'red');
+shape.render();
 //# sourceMappingURL=index.js.map
