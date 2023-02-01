@@ -1,29 +1,26 @@
-// Static Members
+class Person {
+  constructor(public firstName: string, public lastName: string) {
 
-class Ride {
-  private static _activeRides: number = 0
-
-  get activeRides(): number {
-    return Ride._activeRides
+  }
+  get fullName() {
+    return this.firstName + ' ' + this.lastName
   }
 
-  // set activeRides(value: number) {
-  //   if (value >= 0) {
-  //     Ride._activeRides += Ride._activeRides + value
-  //   } else {
-  //     throw new Error('Value cannot be negative.')
-  //   }
-  // }
-
-  start() { Ride._activeRides++ }
-  stop() { Ride._activeRides-- }
+  walk() {
+    console.log('Walking')
+  }
 }
 
-let ride1 = new Ride()
-ride1.start()
+class Student extends Person {
+  constructor(public studentId: number, firstName: string, lastName: string) {
+    super(firstName, lastName)
+  }
 
-let ride2 = new Ride()
-ride2.start()
+  takeTest() {
+    console.log('Taking a test.')
+  }
+}
 
-console.log(ride1.activeRides)
-console.log(ride2.activeRides)
+let student = new Student(1, 'John', 'Doe')
+
+console.log(student)
