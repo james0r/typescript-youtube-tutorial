@@ -1,14 +1,29 @@
-class SeatAssignment {
-  // A1, A2, ...
-  // Index signature property
-  [seatNumber: string]: string
+// Static Members
+
+class Ride {
+  private static _activeRides: number = 0
+
+  get activeRides(): number {
+    return Ride._activeRides
+  }
+
+  // set activeRides(value: number) {
+  //   if (value >= 0) {
+  //     Ride._activeRides += Ride._activeRides + value
+  //   } else {
+  //     throw new Error('Value cannot be negative.')
+  //   }
+  // }
+
+  start() { Ride._activeRides++ }
+  stop() { Ride._activeRides-- }
 }
 
-let seats = new SeatAssignment()
+let ride1 = new Ride()
+ride1.start()
 
-// Good
-seats.A1 = 'James'
-seats.A2 = 'Roger'
+let ride2 = new Ride()
+ride2.start()
 
-// Bad
-seats.A3 = 25
+console.log(ride1.activeRides)
+console.log(ride2.activeRides)
