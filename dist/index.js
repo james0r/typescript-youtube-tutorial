@@ -20,6 +20,11 @@ class Student extends Person {
         console.log('Taking a test.');
     }
 }
-let student = new Student(1, 'John', 'Doe');
-console.log(student);
+class Teacher extends Person {
+    get fullName() {
+        return 'Professor ' + super.fullName;
+    }
+}
+let teacher = new Teacher('John', 'Doe');
+console.log(teacher.fullName);
 //# sourceMappingURL=index.js.map

@@ -21,6 +21,13 @@ class Student extends Person {
   }
 }
 
-let student = new Student(1, 'John', 'Doe')
+class Teacher extends Person {
+  
+  override get fullName() {
+    return 'Professor ' + super.fullName
+  }
+}
 
-console.log(student)
+let teacher = new Teacher('John', 'Doe')
+
+console.log(teacher.fullName)
