@@ -1,15 +1,22 @@
-function reject(message: string): never {
-  throw new Error(message)
-}
+// Creating classes
 
-reject('...')
-console.log('something')
+class Account {
+  // The below properties only exist in TypeScript, not in Javascript.
+  id: number
+  owner: string
+  balance: number
 
-function processEvents(): never {
-  while (true) {
-    // Read a message from a queue
+  constructor(id: number, owner: string, balance: number) {
+    this.id = id
+    this.owner = owner
+    this.balance = balance
+  }
+
+  deposit(amount: number): void {
+    if (amount <= 0) {
+      throw new Error('Invalid amount')
+    }
+
+    this.balance += amount
   }
 }
-
-processEvents()
-console.log('something')
