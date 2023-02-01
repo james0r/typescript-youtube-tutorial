@@ -1,13 +1,15 @@
 // Creating classes
 
 class Account {
-  // The below properties only exist in TypeScript, not in Javascript.
-  readonly id: number
-  owner: string
-  private _balance: number
   nickname?: string
 
-  constructor(id: number, owner: string, _balance: number) {
+  // Here we declare and initialize our variables as arguments for our constructor
+  // These are called Parameter Properties
+  constructor(
+    public readonly id: number,
+    public owner: string,
+    private _balance: number
+  ) {
     this.id = id
     this.owner = owner
     this._balance = _balance
@@ -22,7 +24,7 @@ class Account {
     this._balance += this._balance + this.calculateTax()
   }
 
-  private calculateTax():number {
+  private calculateTax(): number {
     return this._balance * .091
   }
 
