@@ -1,10 +1,6 @@
 "use strict";
-var _a;
-function getCustomer(id) {
-    return id === 0 ? null : { birthday: new Date() };
+if (typeof window === 'object') {
+    let phone = document.getElementById('phone');
+    console.log(phone.value);
 }
-let customer = getCustomer(0);
-console.log((_a = customer === null || customer === void 0 ? void 0 : customer.birthday) === null || _a === void 0 ? void 0 : _a.getFullYear());
-let log = null;
-log === null || log === void 0 ? void 0 : log('a');
 //# sourceMappingURL=index.js.map
