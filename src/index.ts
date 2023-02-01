@@ -1,3 +1,7 @@
+// Protected and Private modifiers.
+// Note: Only use protected if you know what you're doing.
+// Most often you should be using prviate and public
+
 class Person {
   constructor(public firstName: string, public lastName: string) {
 
@@ -17,9 +21,13 @@ class Student extends Person {
   }
 
   takeTest() {
+    this.walk()
     console.log('Taking a test.')
   }
 }
+
+let student = new Student(1, 'James', 'Auble')
+student.takeTest()
 
 class Teacher extends Person {
   
@@ -36,19 +44,4 @@ class Principal extends Person {
   }
 }
 
-function printNames(people: Person[]) {
-  for (let person of people) {
-    console.log(person.fullName)
-  }
-}
 
-// Open Closed Principle
-// Def: Classes should be open for extension and closed for modification
-// https://en.wikipedia.org/wiki/Open%E2%80%93closed_principle
-
-// Polymorphism in action
-printNames([
-  new Student(1, 'Bob', 'Jenkins'),
-  new Teacher('Tom', 'Hatheford'),
-  new Principal('Susan', 'Summers')
-])

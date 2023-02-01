@@ -16,10 +16,16 @@ class Student extends Person {
         super(firstName, lastName);
         this.studentId = studentId;
     }
+    walk() {
+        console.log('A student walking.');
+    }
     takeTest() {
+        this.walk();
         console.log('Taking a test.');
     }
 }
+let student = new Student(1, 'James', 'Auble');
+student.takeTest();
 class Teacher extends Person {
     get fullName() {
         return 'Professor ' + super.fullName;
@@ -31,14 +37,4 @@ class Principal extends Person {
         return 'Principal ' + super.fullName;
     }
 }
-function printNames(people) {
-    for (let person of people) {
-        console.log(person.fullName);
-    }
-}
-printNames([
-    new Student(1, 'Bob', 'Jenkins'),
-    new Teacher('Tom', 'Hatheford'),
-    new Principal('Susan', 'Summers')
-]);
 //# sourceMappingURL=index.js.map
