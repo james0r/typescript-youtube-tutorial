@@ -2,9 +2,10 @@
 
 class Account {
   // The below properties only exist in TypeScript, not in Javascript.
-  id: number
+  readonly id: number
   owner: string
   balance: number
+  nickname?: string
 
   constructor(id: number, owner: string, balance: number) {
     this.id = id
