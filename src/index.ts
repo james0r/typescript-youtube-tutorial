@@ -28,7 +28,7 @@ class Account {
     return this._balance * .091
   }
 
-  getBalance(): number {
+  get balance(): number {
     return this._balance
   }
 }
@@ -36,4 +36,4 @@ class Account {
 let account = new Account(1, 'Mosh', 0)
 account.deposit(100)
 
-console.log(account.getBalance())
+console.log(account.balance)

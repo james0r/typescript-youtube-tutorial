@@ -4,6 +4,9 @@ class Account {
         this.id = id;
         this.owner = owner;
         this._balance = _balance;
+        this.id = id;
+        this.owner = owner;
+        this._balance = _balance;
     }
     deposit(amount) {
         if (amount <= 0) {
@@ -15,11 +18,11 @@ class Account {
     calculateTax() {
         return this._balance * .091;
     }
-    getBalance() {
+    get balance() {
         return this._balance;
     }
 }
 let account = new Account(1, 'Mosh', 0);
 account.deposit(100);
-console.log(account.getBalance());
+console.log(account.balance);
 //# sourceMappingURL=index.js.map
