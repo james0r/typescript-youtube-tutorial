@@ -1,9 +1,10 @@
-// Generics Classes
+// Generic Functions
 
-class KeyValuePair<K, V> {
-  constructor(public key: K, public value: V) {
-
+class ArrayUtils {
+  
+  static wrapInArray<T>(value: T) {
+    return [value]
   }
 }
 
-let pair = new KeyValuePair<string, string>('1', 'a')
+let numbers = ArrayUtils.wrapInArray(1)
