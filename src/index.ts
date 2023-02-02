@@ -1,34 +1,23 @@
-// Generic Constraints
+interface Product {
+  name: string
+  price: number
+}
 
-class Person {
-  constructor(name: string) {
-    console.log(name)
+class Store<T> {
+  protected _objects: T[] = []
+
+  add(obj: T): void {
+    this._objects.push(obj)
   }
 }
 
-class Customer extends Person {
-
+// Pass on the generic type parameter
+class CompressibleStore<T> extends Store<T> {
+  compress() {}
 }
 
-class Clerk {
-
+class SearchableStore<T extends { name: string }> extends Store<T> {
+  find(name: string): T | undefined {
+    return this._objects.find((obj) => obj.name === name)
+  }
 }
-
-// Our generic type is constained by objects that extend Person here.
-function echo<T extends Person>(value: T): T {
-  return value
-}
-
-// This doesn't work, because we don't know if type T is going to be a string or number.
-// If a number is passed, then our return type of T is no longer valid.
-function echoStringOrNumber<T extends string | number>(value: T): T {
-  return 'string'
-}
-
-echo(new Customer('a'))
-
-echoStringOrNumber(58)
-
-// let ourNumber = echoStringOrNumber(58)
-
-console.log(typeof ourNumber)

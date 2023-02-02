@@ -1,21 +1,18 @@
 "use strict";
-class Person {
-    constructor(name) {
-        console.log(name);
+class Store {
+    constructor() {
+        this._objects = [];
+    }
+    add(obj) {
+        this._objects.push(obj);
     }
 }
-class Customer extends Person {
+class CompressibleStore extends Store {
+    compress() { }
 }
-class Clerk {
+class SearchableStore extends Store {
+    find(name) {
+        return this._objects.find((obj) => obj.name === name);
+    }
 }
-function echo(value) {
-    return value;
-}
-function echoStringOrNumber(value) {
-    return value;
-}
-echo(new Customer('a'));
-echoStringOrNumber(58);
-let ourNumber = echoStringOrNumber(58);
-console.log(typeof ourNumber);
 //# sourceMappingURL=index.js.map
