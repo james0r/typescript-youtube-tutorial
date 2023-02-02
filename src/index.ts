@@ -1,29 +1,34 @@
-// https://mywebsite.com/users
-// https://mywebsite.com/products
+// Generic Constraints
 
-// James's explanation:
-// Generics allow us to "prop drill" types through in this case
-// first a function invocation, through the function definition, through an interface type to a property
-// type union. Crazy right? A take away is the flexibility and polymorphyism of this approach that
-// allows us to dynamically change the shape of our fetch() return type without making changes to the actual
-// function definition. Like "open for extension and closed for modification" from the polymorphyism section.
-
-interface Result<T> {
-  data: T | null,
-  error: string | null
+class Person {
+  constructor(name: string) {
+    console.log(name)
+  }
 }
 
-function fetch<T>(url: string): Result<T> {
-  return { data: null, error: null }
+class Customer extends Person {
+
 }
 
-interface User {
-  username: string
+class Clerk {
+
 }
 
-interface Product {
-  title: string
+// Our generic type is constained by objects that extend Person here.
+function echo<T extends Person>(value: T): T {
+  return value
 }
 
-let result = fetch<User>('url')
-result.data
+// This doesn't work, because we don't know if type T is going to be a string or number.
+// If a number is passed, then our return type of T is no longer valid.
+function echoStringOrNumber<T extends string | number>(value: T): T {
+  return 'string'
+}
+
+echo(new Customer('a'))
+
+echoStringOrNumber(58)
+
+// let ourNumber = echoStringOrNumber(58)
+
+console.log(typeof ourNumber)
