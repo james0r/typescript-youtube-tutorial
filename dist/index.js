@@ -5,28 +5,22 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-function Component(options) {
-    return (constructor) => {
-        console.log('Component decorator called');
-        constructor.prototype.options = options;
-        constructor.prototype.uniqueId = Date.now();
-        constructor.prototype.insertInDOM = () => {
-            console.log('Inserting the component in the DOM');
-        };
+function Log(target, methodName, descriptor) {
+    const original = descriptor.value;
+    descriptor.value = function (message) {
+        console.log('Before');
+        original.call(this, message);
+        console.log('After');
     };
 }
-function Pipe(constructor) {
-    console.log('Pipe decorator called');
-    constructor.prototype.pipe = true;
-}
-let ProfileComponent = class ProfileComponent {
-    constructor(name) {
-        console.log(name);
+class Person {
+    say(message) {
+        console.log('Person says ' + message);
     }
-};
-ProfileComponent = __decorate([
-    Component({ selector: '#my-profile' }),
-    Pipe
-], ProfileComponent);
-let profile = new ProfileComponent('James');
+}
+__decorate([
+    Log
+], Person.prototype, "say", null);
+let person = new Person();
+person.say('Hello');
 //# sourceMappingURL=index.js.map
