@@ -15,13 +15,18 @@ function Component(options) {
         };
     };
 }
+function Pipe(constructor) {
+    console.log('Pipe decorator called');
+    constructor.prototype.pipe = true;
+}
 let ProfileComponent = class ProfileComponent {
     constructor(name) {
         console.log(name);
     }
 };
 ProfileComponent = __decorate([
-    Component({ selector: '#my-profile' })
+    Component({ selector: '#my-profile' }),
+    Pipe
 ], ProfileComponent);
 let profile = new ProfileComponent('James');
 //# sourceMappingURL=index.js.map

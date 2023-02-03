@@ -1,4 +1,4 @@
-// Parameterized Decorators
+// Decorator Composition
 
 type ComponentOptions ={
   selector: string
@@ -16,6 +16,11 @@ function Component(options: ComponentOptions) {
   }
 }
 
+function Pipe(constructor: Function) {
+  console.log('Pipe decorator called')  
+  constructor.prototype.pipe = true
+}
+
 // function Component(constructor: Function) {
 //   console.log('Component decorator called')
 //   constructor.prototype.uniqueId = Date.now()
@@ -25,6 +30,8 @@ function Component(options: ComponentOptions) {
 // }
 
 @Component({ selector: '#my-profile' })
+@Pipe
+// f(g(x))
 class ProfileComponent {
   constructor(name: string) {
     console.log(name)
