@@ -1,22 +1,39 @@
+// Type Mapping
+
 interface Product {
   name: string
   price: number
 }
 
-class Store<T> {
-  protected _objects: T[] = []
-
-  add(obj: T): void {
-    this._objects.push(obj)
-  }
-
-  // keyof T will produce a type union of types declared on Product
-  find(property: keyof T, value: unknown): T | undefined {
-    return this._objects.find((obj) => obj[property] === value)
-  }
+type ReadOnlyProduct = {
+  // Index signature
+  // keyof
+  readonly [Property in keyof Product]: Product[Property]
 }
 
-let store = new Store<Product>()
-store.add({ name: 'a', price: 1 })
-store.find('name', 'a')
-store.find('price', 1)
+let product: ReadOnlyProduct = {
+  name: 'a',
+  price: 1
+}
+
+// ...and using Generics
+type ReadOnly<T> = {
+  readonly [K in keyof T]: T[K]
+}
+
+let roProduct: ReadOnly<Product> = {
+  name: 'a',
+  price: 1
+}
+
+type Optional<T> = {
+  [K in keyof T]?: T[K]
+}
+
+// No error here because properties are all optional
+let opProduct: Optional<Product> = {
+  name: 'a'
+}
+
+// The above examples are common and thus included in TypeScript referred to as Utility Types
+// https://www.typescriptlang.org/docs/handbook/utility-types.html
