@@ -1,36 +1,21 @@
-// Property Decorator
+// Parameter Decorators
 
-function MinLength(length: number) {
-  return (target: any, propertyName: string) => {
-    let value: string
-
-    const descriptor: PropertyDescriptor = {
-      get() {
-        return value
-      },
-
-      set(newValue: string) {
-        if (newValue.length < length) {
-          throw new Error(`${propertyName} should be at least ${length} characters long.`)
-        }
-
-        value = newValue
-      }
-    }
-
-    Object.defineProperty(target, propertyName, descriptor)
-  }
+type WatchedParameter = {
+  methodName: string,
+  parameterIndex: number
 }
 
-class User {
-  @MinLength(4)
-  password: string
+const watchedParameters: WatchedParameter[] = []
 
-  constructor(password: string) {
-    this.password = password
-  }
+function Watch(target: any, methodName: string, parameterIndex: number) {
+  watchedParameters.push({
+    methodName,
+    parameterIndex
+  })
 }
 
-let user = new User('12333')
+class Vehicle {
+  move(@Watch speed: number) {}
+}
 
-console.log(user.password)
+console.log(watchedParameters)
