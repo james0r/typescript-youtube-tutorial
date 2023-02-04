@@ -1,21 +1,5 @@
-// Parameter Decorators
+import { Circle } from "./shapes";
 
-type WatchedParameter = {
-  methodName: string,
-  parameterIndex: number
-}
+let circle = new Circle(1)
 
-const watchedParameters: WatchedParameter[] = []
-
-function Watch(target: any, methodName: string, parameterIndex: number) {
-  watchedParameters.push({
-    methodName,
-    parameterIndex
-  })
-}
-
-class Vehicle {
-  move(@Watch speed: number) {}
-}
-
-console.log(watchedParameters)
+console.log(circle)
