@@ -1,6 +1,4 @@
-import * as Shapes from "./shapes";
+import { calculateTax, sayHello } from './tax'
 
-let circle = new Shapes.Circle(1)
-
-console.log(circle)
-
+let tax = calculateTax(10_000)
+console.log(tax)
