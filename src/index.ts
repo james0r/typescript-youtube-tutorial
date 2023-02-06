@@ -1,9 +1,6 @@
-import { Circle } from "./shapes";
-import Store, { Format } from "./storage"
+import * as Shapes from "./shapes";
 
-let circle = new Circle(1)
-let store = new Store()
+let circle = new Shapes.Circle(1)
 
-console.log(store)
 console.log(circle)
 
