@@ -1,4 +1,3 @@
-import { calculateTax, sayHello } from './tax'
+import * as _ from 'lodash'
 
-let tax = calculateTax(10_000)
-console.log(tax)
+_.clone({ name: 'string' })
